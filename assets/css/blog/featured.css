@@ -69,3 +69,54 @@
 .post-feed .featured .post-author-image {
     border-color: transparent;
 }
+
+.post-feed .featured.has-default-image {
+    min-height: auto;
+}
+
+.post-feed .featured.has-default-image .post-link::before {
+    content: none;
+}
+
+.post-feed .featured.has-default-image .post-media .post-image {
+    display: block;
+}
+
+.post-feed .featured.has-default-image .u-placeholder {
+    background-color: var(--light-gray-color);
+}
+
+.post-feed .featured.has-default-image .post-wrapper,
+.post-feed .featured.has-default-image .post-footer {
+    background-color: var(--white-color);
+}
+
+.post-feed .featured.has-default-image .post-wrapper {
+    display: block;
+}
+
+.post-feed .featured.has-default-image .post-tag {
+    color: var(--tag-color, var(--ghost-accent-color));
+}
+
+.post-feed .featured.has-default-image .post-title {
+    font-size: 1.6rem;
+}
+
+.post-feed .featured.has-default-image .post-title,
+.post-feed .featured.has-default-image .post-excerpt,
+.post-feed .featured.has-default-image .post-more {
+    color: inherit;
+}
+
+.post-feed .featured.has-default-image .post-excerpt {
+    display: block;
+}
+
+.post-feed .featured.has-default-image .post-footer {
+    border-color: var(--light-gray-color);
+}
+
+.post-feed .featured.has-default-image .post-author-image {
+    border-color: var(--white-color);
+}

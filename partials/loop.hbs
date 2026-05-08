@@ -1,4 +1,4 @@
-<article class="{{post_class}} u-shadow"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
+<article class="{{post_class}}{{#unless feature_image}} has-default-image{{/unless}} u-shadow"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
 <a class="post-link" href="{{url}}">
     {{#if feature_image}}
         {{#if featured}}
@@ -26,6 +26,17 @@
             </div>
         </figure>
         {{/if}}
+    {{else}}
+        <figure class="post-media">
+            <div class="u-placeholder same-height rectangle">
+                <img
+                    class="post-image u-object-fit"
+                    src="{{asset "images/default-home-card.png"}}"
+                    alt="{{title}}"
+                    loading="lazy"
+                >
+            </div>
+        </figure>
     {{/if}}
 
     <div class="post-wrapper">
