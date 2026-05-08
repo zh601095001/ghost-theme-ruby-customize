@@ -1,0 +1,110 @@
+.post-toc {
+    position: fixed;
+    left: 24px;
+    top: 140px;
+    z-index: 998;
+    width: 220px;
+    max-height: 70vh;
+    padding: 14px 16px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.88);
+    border-left: 3px solid #e5e7eb;
+    backdrop-filter: blur(8px);
+}
+
+.post-toc-title {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.post-toc a {
+    display: block;
+    margin: 4px 0;
+    color: #555;
+    text-decoration: none;
+}
+
+.post-toc a:hover,
+.post-toc a.active {
+    font-weight: 600;
+    color: #111;
+}
+
+.post-toc .toc-h2 {
+    padding-left: 14px;
+    font-size: 13px;
+}
+
+.post-toc .toc-h3 {
+    padding-left: 28px;
+    font-size: 12px;
+}
+
+.toc-toggle,
+.back-to-top {
+    position: fixed;
+    right: 28px;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    cursor: pointer;
+    background: #111;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.toc-toggle {
+    bottom: 86px;
+    font-size: 18px;
+}
+
+.back-to-top {
+    bottom: 32px;
+    font-size: 20px;
+}
+
+.toc-toggle:hover,
+.back-to-top:hover {
+    background: #333;
+}
+
+@media (max-width: 1200px) {
+    .post-toc {
+        inset: auto 16px 138px;
+        display: none;
+        width: auto;
+        max-height: 50vh;
+        padding: 16px;
+        background: #fff;
+        border-left: 0;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .post-toc.show {
+        display: block;
+    }
+
+    .toc-toggle {
+        right: 18px;
+        bottom: 76px;
+        display: flex;
+        width: 40px;
+        height: 40px;
+    }
+
+    .back-to-top {
+        right: 18px;
+        bottom: 22px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
