@@ -46,33 +46,54 @@
             tocButton.setAttribute('aria-label', '\u6253\u5f00\u76ee\u5f55');
             document.body.appendChild(tocButton);
 
+            const links = Array.from(toc.querySelectorAll('a'));
+            let isTocClicking = false;
+            let tocClickTimer;
+
+            function setActiveLink(activeLink) {
+                links.forEach((link) => link.classList.remove('active'));
+
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+
+            function lockTocClickActive() {
+                isTocClicking = true;
+                window.clearTimeout(tocClickTimer);
+                tocClickTimer = window.setTimeout(function () {
+                    isTocClicking = false;
+                }, 1000);
+            }
+
             tocButton.addEventListener('click', function () {
                 toc.classList.toggle('show');
             });
 
             toc.addEventListener('click', function (event) {
-                if (event.target.closest('a')) {
+                const link = event.target.closest('a');
+
+                if (link) {
+                    setActiveLink(link);
+                    lockTocClickActive();
                     toc.classList.remove('show');
                 }
             });
 
-            const links = Array.from(toc.querySelectorAll('a'));
-
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver(
                     (entries) => {
+                        if (isTocClicking) {
+                            return;
+                        }
+
                         entries.forEach((entry) => {
                             if (!entry.isIntersecting) {
                                 return;
                             }
 
-                            links.forEach((link) => link.classList.remove('active'));
-
                             const activeLink = links.find((link) => link.getAttribute('href') === `#${entry.target.id}`);
-
-                            if (activeLink) {
-                                activeLink.classList.add('active');
-                            }
+                            setActiveLink(activeLink);
                         });
                     },
                     {
